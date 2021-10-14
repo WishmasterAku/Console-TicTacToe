@@ -70,7 +70,6 @@ namespace Console_TicTacToe
                     break;
             }
         }
-
         public static void GameInSession()
         {
             while (gameInSession == true)
@@ -108,7 +107,6 @@ namespace Console_TicTacToe
                 }
             }
         }
-
         public static void PlayerOneGameWinner()
         {
 
@@ -160,7 +158,6 @@ namespace Console_TicTacToe
             gameInSession = false;
             Console.ReadLine();
         }
-
         public static void PlayerTwoGameWinner()
         {
             //Horizontal
