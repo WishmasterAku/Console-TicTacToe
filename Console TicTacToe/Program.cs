@@ -8,10 +8,14 @@ namespace Console_TicTacToe
         static bool gameInSession = true;
         static bool playerOneTurnToMove = true;
         static bool playerWon = false;
+        static bool validInput = false;
         static string playerOne;
         static string playerTwo;
         
-        //static char[] spot = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+        static int customRow = 6;
+        static int customCol = 6;
+        static int x = 1;
+        static int[] customSpots = Enumerable.Range(0, 100).ToArray();        
         static char[,] spots = {
             { '1', '2', '3' },
             { '4', '5', '6' },
@@ -19,22 +23,23 @@ namespace Console_TicTacToe
         };
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Xander's Tic Tac Toe Game!");
+            CustomBoardLayout();
+
+            /*
+            Console.WriteLine("Welcome to Xander's Tic Tac Toe Game!"); 
+            Console.WriteLine("Player 1 please enter your name");
+            playerOne = Console.ReadLine();
+            Console.WriteLine("Player 2 please enter your name");
+            playerTwo = Console.ReadLine();
             Console.WriteLine("Would you like to play a Classic Game or Custom Game?");
             Console.WriteLine("Press 1 for Classic and 2 for Custom");
             int typeOfGame = Int32.Parse(Console.ReadLine());
-            if(typeOfGame == 1)
-            {
-                Console.WriteLine("Player 1 please enter your name");
-                playerOne = Console.ReadLine();
-                Console.WriteLine("Player 2 please enter your name");
-                playerTwo = Console.ReadLine();
-
-                GameInSession();
-            }
+            if(typeOfGame == 1)                                       
+                GameInSession();           
             else
-            CustomGame();
+                CustomGame();
             //spot.ToList().ForEach(i => Console.WriteLine(i.ToString()));
+            */
         }
 
         static void TicTacToeLayout()
@@ -107,6 +112,45 @@ namespace Console_TicTacToe
                 {
                     Console.WriteLine($"" + playerTwo + " Make your move");
                     TicTacToeLayout();
+                    char playerTwoMove = Convert.ToChar(Console.ReadLine());
+
+                    PlayerTurn(playerTwoMove, 'O');
+                    PlayerTwoGameWinner();
+                    if (playerWon == true)
+                    {
+                        PlayerTwoWon();
+                    }
+                    playerOneTurnToMove = true;
+                    Console.Clear();
+                }
+            }
+
+        }
+        
+        public static void CustomGameInSession()
+        {
+            while (gameInSession == true)
+            {
+                if (playerOneTurnToMove == true)
+                {
+                    Console.WriteLine($""+playerOne+" Make your move");
+                    CustomBoardLayout();
+                    char playerOneMove = Convert.ToChar(Console.ReadLine());
+
+                    PlayerTurn(playerOneMove, 'X');
+                    PlayerOneGameWinner();
+                    if(playerWon == true)
+                    {
+                        PlayerOneWon();
+                    }
+                    playerOneTurnToMove = false;
+                    Console.Clear();
+                    
+                }
+                else
+                {
+                    Console.WriteLine($"" + playerTwo + " Make your move");
+                    CustomBoardLayout();
                     char playerTwoMove = Convert.ToChar(Console.ReadLine());
 
                     PlayerTurn(playerTwoMove, 'O');
@@ -223,52 +267,64 @@ namespace Console_TicTacToe
         }
         public static void CustomGame()
         {
-            Console.WriteLine("How many Rows?");
-            int customRow = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("How many Columns?");
-            int customCol = Int32.Parse(Console.ReadLine());
-            int x = 1;
-            //int customRow = 10;
-            //int customCol = 10;
-            int[] spot = Enumerable.Range(0, 1000).ToArray();
 
-            Console.WriteLine();
-            for (int row = 0; row < customRow; row++)
+            Console.WriteLine("How many Rows? (Number between 3 and 9)");
+            customRow = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("How many Columns? (Number between 3 and 9)");
+            customCol = Int32.Parse(Console.ReadLine());
+
+
+            if ((customRow < 3 || customRow > 9) && (customCol < 3 || customCol > 9))
             {
-                Console.Write("|  ");
-                for (int col = 0; col < customCol; col++)
-                {
-                    Console.Write(spot[x].ToString("D2"));
-                    Console.Write("  |  ");
-                    x++;
-                }
-                Console.WriteLine();
-
-
-                //Console.WriteLine();
-                //for (int row = 0; row < customRow; row++)
-                //{   
-                //    Console.Write("| ");
-                //    for (int col = 0; col < customCol; col++)
-                //    {
-                //        Console.Write(spot[x].ToString("D2"));
-                //        x++;
-                //        Console.Write("  | ");
-
-                //        if (spot[x] <= 10)
-                //        {
-
-                //            Console.Write("  | ");
-                //        }
-                //        else
-                //        {
-                //            //Console.Write(spot[x]);
-                //            Console.Write(" | ");
-
-                //        }
-
-                //    }
+                Console.WriteLine("Invalid Choices");
             }
+            else
+            {
+                CustomGameInSession();
+            }                   
+          
+        }
+        public static void CustomBoardLayout()
+            {
+
+                Console.WriteLine();
+                for (int row = 0; row < customRow; row++)
+                {
+                    Console.Write("|  ");
+                    for (int col = 0; col < customCol; col++)
+                    {
+                        Console.Write(customSpots[x].ToString("D2"));
+                        Console.Write("  |  ");
+                        x++;
+                    }
+                    Console.WriteLine();                
+                }
+
+            Console.ReadLine();
+            //Console.WriteLine();
+            //for (int row = 0; row < customRow; row++)
+            //{   
+            //    Console.Write("| ");
+            //    for (int col = 0; col < customCol; col++)
+            //    {
+            //        Console.Write(spot[x].ToString("D2"));
+            //        x++;
+            //        Console.Write("  | ");
+
+            //        if (spot[x] <= 10)
+            //        {
+
+            //            Console.Write("  | ");
+            //        }
+            //        else
+            //        {
+            //            //Console.Write(spot[x]);
+            //            Console.Write(" | ");
+
+            //        }
+
+            //    }
+
         }
     }
 }
