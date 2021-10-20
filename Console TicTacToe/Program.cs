@@ -14,7 +14,7 @@ namespace Console_TicTacToe
         
         static int customRow = 6;
         static int customCol = 6;
-        static int x = 1;
+        //static int x = 1;
         static char[] customSpots;     
         static char[,] spots = {
             { '1', '2', '3' },
@@ -123,7 +123,53 @@ namespace Console_TicTacToe
                 }
             }
 
-        }                
+        }
+        
+        
+
+        public static void PlayerOneGameWinnerCustom()
+        {
+
+            int x = 1;
+            
+
+            int[] vertical = new int[customRow];
+            Array.Fill(vertical, 0);
+
+            for (int row = 0; row < customRow; row++)
+            {
+                int hortizonal = 0;
+
+                for (int col = 0; col < customCol; col++)
+                {
+                    char value = customSpots[x];
+
+                    if(value == 'X')
+                    {
+                        hortizonal += 1;
+                        vertical[col] += 1;
+                    }
+                    else
+                    {
+                        hortizonal = 0;
+                        vertical[col] = 0;
+                    }
+
+                    if (hortizonal == 3 || vertical[col] == 3)
+                    {
+                        playerWon = true;
+                    }
+
+
+                    x++;
+                }
+                
+            }
+
+
+        }
+
+
         public static void PlayerOneGameWinner()
         {
 
@@ -245,7 +291,7 @@ namespace Console_TicTacToe
           
         }
         public static void CustomBoardLayout()
-            {
+        {
             int[] customSpots = Enumerable.Range(0, 100).ToArray();
 
             customSpots[10] = Convert.ToChar('X'); //Testing inserting predetermined value
