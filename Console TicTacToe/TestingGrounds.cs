@@ -12,7 +12,7 @@ namespace Console_TicTacToe
         static int customCol = 6;
         static int x = 1;
         static char[] customSpots;
-        static void Main(string[] args)
+        static void MainHold(string[] args)
         {
             CustomBoardLayout();
         }

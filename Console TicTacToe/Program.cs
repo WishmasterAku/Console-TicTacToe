@@ -5,30 +5,31 @@ namespace Console_TicTacToe
 {
     class Program
     {
-        static bool gameInSession = true;
-        static bool playerOneTurnToMove = true;
-        static bool playerWon = false;
-        static bool validInput = false;
-        static string playerOne;
-        static string playerTwo;
+        //static bool gameInSession = true;
+        //static bool playerOneTurnToMove = true;
+        //static bool playerWon = false;
+        //static bool validInput = false;
+        //static string playerOne;
+        //static string playerTwo;
         
         static int customRow = 6;
         static int customCol = 6;
         //static int x = 1;
-        static char[] customSpots;     
-        static char[,] spots = {
-            { '1', '2', '3' },
-            { '4', '5', '6' },
-            { '7', '8', '9' },
-        };
-        static void MainOnHold(string[] args)
+        static char[] customSpots;
+        //char[,] spots = {
+        //    { '1', '2', '3' },
+        //    { '4', '5', '6' },
+        //    { '7', '8', '9' },
+        
+        public static void Main(string[] args)
         {
+              
             
             Console.WriteLine("Welcome to Xander's Tic Tac Toe Game!"); 
             Console.WriteLine("Player 1 please enter your name");
-            playerOne = Console.ReadLine();
+            string playerOne = Console.ReadLine();
             Console.WriteLine("Player 2 please enter your name");
-            playerTwo = Console.ReadLine();
+            string playerTwo = Console.ReadLine();
             Console.WriteLine("Would you like to play a Classic Game or Custom Game?");
             Console.WriteLine("Press 1 for Classic and 2 for Custom");
             int typeOfGame = Int32.Parse(Console.ReadLine());
@@ -40,8 +41,10 @@ namespace Console_TicTacToe
             
         }
 
-        static void TicTacToeLayout()
+        public static void TicTacToeLayout(char[,] spots)
         {
+        
+
 
             Console.WriteLine("     |     |     ");
             Console.WriteLine("  {0}  |  {1}  |  {2}  ", spots[0, 0], spots[0, 1], spots[0, 2]);
@@ -53,7 +56,7 @@ namespace Console_TicTacToe
             Console.WriteLine("  {0}  |  {1}  |  {2}  ", spots[2, 0], spots[2, 1], spots[2, 2]);
             Console.WriteLine("     |     |     ");
         }
-        public static void PlayerTurn(char selection, char playerMove)
+        public static void PlayerTurn(char selection, char playerMove, char [,] spots)
         {
             switch (selection)
             {
@@ -88,15 +91,23 @@ namespace Console_TicTacToe
         }
         public static void GameInSession()
         {
+            bool gameInSession = true;
+            bool playerOneTurnToMove = true;
+            bool playerWon = false;
+            char[,] spots = {
+            { '1', '2', '3' },
+            { '4', '5', '6' },
+            { '7', '8', '9' }, };
+
             while (gameInSession == true)
             {
                 if (playerOneTurnToMove == true)
                 {
                     Console.WriteLine($""+playerOne+" Make your move");
-                    TicTacToeLayout();
+                    TicTacToeLayout(spots);
                     char playerOneMove = Convert.ToChar(Console.ReadLine());
 
-                    PlayerTurn(playerOneMove, 'X');
+                    PlayerTurn(playerOneMove, 'X', spots);
                     PlayerOneGameWinner();
                     if(playerWon == true)
                     {
@@ -109,10 +120,10 @@ namespace Console_TicTacToe
                 else
                 {
                     Console.WriteLine($"" + playerTwo + " Make your move");
-                    TicTacToeLayout();
+                    TicTacToeLayout(spots);
                     char playerTwoMove = Convert.ToChar(Console.ReadLine());
 
-                    PlayerTurn(playerTwoMove, 'O');
+                    PlayerTurn(playerTwoMove, 'O', spots);
                     PlayerTwoGameWinner();
                     if (playerWon == true)
                     {
@@ -402,6 +413,7 @@ namespace Console_TicTacToe
         }
         public static void CustomBoardLayout()
         {
+            int x = 1;
             int[] customSpots = Enumerable.Range(0, 100).ToArray();
 
             customSpots[10] = Convert.ToChar('X'); //Testing inserting predetermined value
