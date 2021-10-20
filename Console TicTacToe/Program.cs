@@ -131,14 +131,15 @@ namespace Console_TicTacToe
         {
 
             int x = 1;
+            int winCondition = 1; // radius
             
 
-            int[] vertical = new int[customRow];
-            Array.Fill(vertical, 0);
+            //int[] vertical = new int[customRow];
+            //Array.Fill(vertical, 0);
 
             for (int row = 0; row < customRow; row++)
             {
-                int hortizonal = 0;
+                //int hortizonal = 0;
 
                 for (int col = 0; col < customCol; col++)
                 {
@@ -146,25 +147,134 @@ namespace Console_TicTacToe
 
                     if(value == 'X')
                     {
-                        hortizonal += 1;
-                        vertical[col] += 1;
-                    }
-                    else
-                    {
-                        hortizonal = 0;
-                        vertical[col] = 0;
-                    }
+                        //hortizonal += 1;
+                        //vertical[col] += 1;
 
-                    if (hortizonal == 3 || vertical[col] == 3)
-                    {
-                        playerWon = true;
+                        bool isComplete = true;
+                        // left and right
+                        for(int c = col- winCondition; c < col+winCondition; ++c)
+                        {
+                            int r = row;
+
+                            char localValue = getValue(r, c);
+
+                            if(localValue != 'X')
+                            {
+                                isComplete = false;
+                            }
+
+                        }
+
+                        if (isComplete)
+                        {
+                            playerWon = true;
+                        }
+                        isComplete = true;
+                        // up and down
+                        for (int r = row - winCondition; r < row + winCondition; ++r)
+                        {
+                            int c = col;
+
+                            char localValue = getValue(r, c);
+
+                            if (localValue != 'X')
+                            {
+                                isComplete = false;
+                            }
+
+                        }
+
+                        if (isComplete)
+                        {
+                            playerWon = true;
+                        }
+                        isComplete = true;
+                        // top left to bottom right
+                        for (int r = row - winCondition; r < row + winCondition; ++r)
+                        {
+                            for (int c = col - winCondition; c < col + winCondition; ++c)
+                            {
+
+                                char localValue = getValue(r, c);
+
+                                if (localValue != 'X')
+                                {
+                                    isComplete = false;
+                                }
+                            }
+                        }
+                        if (isComplete)
+                        {
+                            playerWon = true;
+                        }
+                        isComplete = true;
+
+                        // bottom left to bottom right
+                        for (int r = row + winCondition; r > row - winCondition; --r)
+                        {
+                            for (int c = col - winCondition; c < col + winCondition; ++c)
+                            {
+
+                                char localValue = getValue(r, c);
+
+                                if (localValue != 'X')
+                                {
+                                    isComplete = false;
+                                }
+                            }
+                        }
+
+
+
+
+                        if (isComplete)
+                        {
+                            playerWon = true;
+                        }
+
+
+
+
                     }
+                    //else
+                    //{
+                    //    //hortizonal = 0;
+                    //    //vertical[col] = 0;
+                    //}
+
+                    //if (hortizonal == 3 || vertical[col] == 3)
+                    //{
+                    //    playerWon = true;
+                    //}
 
 
                     x++;
                 }
                 
             }
+
+
+        }
+
+
+        public static char getValue(int r, int c)
+        {
+
+            if(r < 0 || r >= customRow)
+            {
+                return '1';
+            }
+
+            if (c < 0 || c >= customCol)
+            {
+                return '1';
+            }
+
+            int coordinate = c + (r * customCol);
+
+            char value = customSpots[coordinate];
+
+            return value;
 
 
         }
