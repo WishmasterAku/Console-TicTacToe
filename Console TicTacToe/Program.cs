@@ -123,45 +123,7 @@ namespace Console_TicTacToe
                 }
             }
 
-        }
-        
-        public static void CustomGameInSession()
-        {
-            while (gameInSession == true)
-            {
-                if (playerOneTurnToMove == true)
-                {
-                    Console.WriteLine($""+playerOne+" Make your move");
-                    CustomBoardLayout();
-                    char playerOneMove = Convert.ToChar(Console.ReadLine());
-
-                    PlayerTurn(playerOneMove, 'X');
-                    PlayerOneGameWinner();
-                    if(playerWon == true)
-                    {
-                        PlayerOneWon();
-                    }
-                    playerOneTurnToMove = false;
-                    Console.Clear();
-                    
-                }
-                else
-                {
-                    Console.WriteLine($"" + playerTwo + " Make your move");
-                    CustomBoardLayout();
-                    char playerTwoMove = Convert.ToChar(Console.ReadLine());
-
-                    PlayerTurn(playerTwoMove, 'O');
-                    PlayerTwoGameWinner();
-                    if (playerWon == true)
-                    {
-                        PlayerTwoWon();
-                    }
-                    playerOneTurnToMove = true;
-                    Console.Clear();
-                }
-            }
-        }
+        }                
         public static void PlayerOneGameWinner()
         {
 
@@ -286,7 +248,7 @@ namespace Console_TicTacToe
             {
             int[] customSpots = Enumerable.Range(0, 100).ToArray();
 
-            customSpots[10] = Convert.ToChar('X');
+            customSpots[10] = Convert.ToChar('X'); //Testing inserting predetermined value
                 Console.WriteLine();
                 for (int row = 0; row < customRow; row++)
                 {
@@ -302,6 +264,43 @@ namespace Console_TicTacToe
 
             Console.ReadLine();  
 
+        }
+        public static void CustomGameInSession()
+        {
+            while (gameInSession == true)
+            {
+                if (playerOneTurnToMove == true)
+                {
+                    Console.WriteLine($"" + playerOne + " Make your move");
+                    CustomBoardLayout();
+                    char playerOneMove = Convert.ToChar(Console.ReadLine()); //Need to convert new table to char array?
+
+                    PlayerTurn(playerOneMove, 'X');// need to fix this to new custom player move
+                    PlayerOneGameWinner();
+                    if (playerWon == true)
+                    {
+                        PlayerOneWon();
+                    }
+                    playerOneTurnToMove = false;
+                    Console.Clear();
+
+                }
+                else
+                {
+                    Console.WriteLine($"" + playerTwo + " Make your move");
+                    CustomBoardLayout();
+                    char playerTwoMove = Convert.ToChar(Console.ReadLine());
+
+                    PlayerTurn(playerTwoMove, 'O');
+                    PlayerTwoGameWinner();
+                    if (playerWon == true)
+                    {
+                        PlayerTwoWon();
+                    }
+                    playerOneTurnToMove = true;
+                    Console.Clear();
+                }
+            }
         }
     }
 }
