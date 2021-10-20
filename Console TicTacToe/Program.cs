@@ -21,7 +21,7 @@ namespace Console_TicTacToe
             { '4', '5', '6' },
             { '7', '8', '9' },
         };
-        static void Main(string[] args)
+        static void MainOnHold(string[] args)
         {
             
             Console.WriteLine("Welcome to Xander's Tic Tac Toe Game!"); 
