@@ -23,9 +23,7 @@ namespace Console_TicTacToe
         };
         static void Main(string[] args)
         {
-            CustomBoardLayout();
-
-            /*
+            
             Console.WriteLine("Welcome to Xander's Tic Tac Toe Game!"); 
             Console.WriteLine("Player 1 please enter your name");
             playerOne = Console.ReadLine();
@@ -39,7 +37,7 @@ namespace Console_TicTacToe
             else
                 CustomGame();
             //spot.ToList().ForEach(i => Console.WriteLine(i.ToString()));
-            */
+            
         }
 
         static void TicTacToeLayout()
