@@ -14,7 +14,7 @@ namespace Console_TicTacToe
         static char[] customSpots;
         static void Main(string[] args)
         {
-
+            CustomBoardLayout();
         }
 
         public static void CustomGame()
