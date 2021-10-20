@@ -15,7 +15,7 @@ namespace Console_TicTacToe
         static int customRow = 6;
         static int customCol = 6;
         static int x = 1;
-        static int[] customSpots = Enumerable.Range(0, 100).ToArray();        
+        static char[] customSpots;     
         static char[,] spots = {
             { '1', '2', '3' },
             { '4', '5', '6' },
@@ -286,7 +286,9 @@ namespace Console_TicTacToe
         }
         public static void CustomBoardLayout()
             {
+            int[] customSpots = Enumerable.Range(0, 100).ToArray();
 
+            customSpots[10] = Convert.ToChar('X');
                 Console.WriteLine();
                 for (int row = 0; row < customRow; row++)
                 {
@@ -300,30 +302,7 @@ namespace Console_TicTacToe
                     Console.WriteLine();                
                 }
 
-            Console.ReadLine();
-            //Console.WriteLine();
-            //for (int row = 0; row < customRow; row++)
-            //{   
-            //    Console.Write("| ");
-            //    for (int col = 0; col < customCol; col++)
-            //    {
-            //        Console.Write(spot[x].ToString("D2"));
-            //        x++;
-            //        Console.Write("  | ");
-
-            //        if (spot[x] <= 10)
-            //        {
-
-            //            Console.Write("  | ");
-            //        }
-            //        else
-            //        {
-            //            //Console.Write(spot[x]);
-            //            Console.Write(" | ");
-
-            //        }
-
-            //    }
+            Console.ReadLine();  
 
         }
     }
