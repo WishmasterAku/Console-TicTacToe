@@ -16,7 +16,7 @@ namespace Console_TicTacToe
         {
             _row = row;
             _col = col;
-            int[,] position = new int[row, col];
+            position = new int[row, col];
 
             for (int x = 0; x < row; x++)
             {
@@ -30,14 +30,15 @@ namespace Console_TicTacToe
         }
         public void printGrid()
         {            
-            for (int x = 0; x < _row; x++)
+            for (int x = 0; x < _row; x++)                
             {
                 Console.Write("|  ");
                 for (int y = 0; y < _col; y++)
                 {
                     Console.Write(" | ");
-                    Console.WriteLine(position[x, y]);
+                    Console.Write(position[x, y]);
                 }
+                Console.WriteLine("");
             }
         }
     }//CLASS
