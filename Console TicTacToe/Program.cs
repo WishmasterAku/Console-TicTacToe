@@ -32,7 +32,7 @@ namespace Console_TicTacToe
                     if (playerOneTurnToMove == true)
                     {
                         Console.WriteLine(" {0} Make your move", playerOne.GetPlayerName());
-                        ClassicLayout();
+                        //ClassicLayout();
                         int playerOneMove = Int32.Parse(Console.ReadLine());//Issue here
 
 
@@ -40,35 +40,9 @@ namespace Console_TicTacToe
 
                         
                         Console.ReadLine();
-
                     }
                 }
             }
-        }
-
-        public static void ClassicLayout()
-        {
-            
-            int[] position = Enumerable.Range(0, 100).ToArray();
-            
-            int x = 1;
-            for (int row = 0; row < 3; row++)
-            {
-                Console.Write("|  ");
-                for (int col = 0; col < 3; col++)
-                {
-                    Console.Write(position[x].ToString("D2"));
-                    Console.Write("  |  ");
-                    x++;
-                }            
-                Console.WriteLine();               
-
-            }           
-            
-        }
-        public static void CustomLayout()
-        {
-
         }
         public static void PlayerMove()
         {
