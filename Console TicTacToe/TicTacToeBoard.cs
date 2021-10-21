@@ -29,16 +29,33 @@ namespace Console_TicTacToe
             }
         }
         public void printGrid()
-        {            
-            for (int x = 0; x < _row; x++)                
+        {
+            Console.Write(" ");
+            for (int i = 0; i <= _col * 4; ++i)
             {
-                Console.Write("|  ");
+                Console.Write("-");
+            }
+            Console.WriteLine("");
+
+            for (int x = 0; x < _row; x++)
+            {
+
+
+
+
                 for (int y = 0; y < _col; y++)
                 {
                     Console.Write(" | ");
                     Console.Write(position[x, y]);
                 }
+
+                Console.Write(" | ");
                 Console.WriteLine("");
+            }
+            Console.Write(" ");
+            for (int i = 0; i <= _col * 4; ++i)
+            {
+                Console.Write("-");
             }
         }
     }//CLASS
