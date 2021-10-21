@@ -9,32 +9,34 @@ namespace Console_TicTacToe
         //static bool playerOneTurnToMove = true;
         //static bool playerWon = false;
         //static bool validInput = false;
-        //static string playerOne;
-        //static string playerTwo;
-        
+        static string playerOne;
+        static string playerTwo;
+
         static int customRow = 6;
         static int customCol = 6;
         //static int x = 1;
         static char[] customSpots;
+        private static bool playerWon;
+
         //char[,] spots = {
         //    { '1', '2', '3' },
         //    { '4', '5', '6' },
         //    { '7', '8', '9' },
-        
-        public static void Main(string[] args)
+
+        public static void Main(string[] args, bool gameInSession)
         {
               
             
             Console.WriteLine("Welcome to Xander's Tic Tac Toe Game!"); 
             Console.WriteLine("Player 1 please enter your name");
-            string playerOne = Console.ReadLine();
+            playerOne = Console.ReadLine();
             Console.WriteLine("Player 2 please enter your name");
-            string playerTwo = Console.ReadLine();
+            playerTwo = Console.ReadLine();
             Console.WriteLine("Would you like to play a Classic Game or Custom Game?");
             Console.WriteLine("Press 1 for Classic and 2 for Custom");
             int typeOfGame = Int32.Parse(Console.ReadLine());
             if(typeOfGame == 1)                                       
-                GameInSession();           
+                GameInSession(gameInSession);           
             else
                 CustomGame();
             //spot.ToList().ForEach(i => Console.WriteLine(i.ToString()));
@@ -89,9 +91,9 @@ namespace Console_TicTacToe
                     break;
             }
         }
-        public static void GameInSession()
+        public static void GameInSession(bool gameInSession)
         {
-            bool gameInSession = true;
+            gameInSession = true;
             bool playerOneTurnToMove = true;
             bool playerWon = false;
             char[,] spots = {
@@ -291,7 +293,7 @@ namespace Console_TicTacToe
         }
 
 
-        public static void PlayerOneGameWinner()
+        public static void PlayerOneGameWinner(char[,] spots)
         {
 
             //Horizontal
@@ -334,15 +336,14 @@ namespace Console_TicTacToe
             return;
 
         }
-        public static void PlayerOneWon()
+        public static void PlayerOneWon(bool gameInSession)
         {
-            Console.Clear();
-            TicTacToeLayout();
+           
             Console.WriteLine($"Congratulations "+playerOne+"!");
             gameInSession = false;
             Console.ReadLine();
         }
-        public static void PlayerTwoGameWinner()
+        public static void PlayerTwoGameWinner(char[,] spots)
         {
             //Horizontal
             if (spots[0, 0] == 'O' && spots[0, 1] == 'O' && spots[0, 2] == 'O')
@@ -384,10 +385,10 @@ namespace Console_TicTacToe
             return;
 
         }
-        public static void PlayerTwoWon()
+        public static void PlayerTwoWon(char[,] spots, bool gameInSession)
         {
             Console.Clear();
-            TicTacToeLayout();
+            TicTacToeLayout(spots);
             Console.WriteLine($"Congratulations " + playerTwo + "!");
             gameInSession = false;
             Console.ReadLine();
@@ -435,40 +436,40 @@ namespace Console_TicTacToe
         }
         public static void CustomGameInSession()
         {
-            while (gameInSession == true)
-            {
-                if (playerOneTurnToMove == true)
-                {
-                    Console.WriteLine($"" + playerOne + " Make your move");
-                    CustomBoardLayout();
-                    char playerOneMove = Convert.ToChar(Console.ReadLine()); //Need to convert new table to char array?
+        //    while (gameInSession == true)
+        //    {
+        //        if (playerOneTurnToMove == true)
+        //        {
+        //            Console.WriteLine($"" + playerOne + " Make your move");
+        //            CustomBoardLayout();
+        //            char playerOneMove = Convert.ToChar(Console.ReadLine()); //Need to convert new table to char array?
 
-                    PlayerTurn(playerOneMove, 'X');// need to fix this to new custom player move
-                    PlayerOneGameWinner();
-                    if (playerWon == true)
-                    {
-                        PlayerOneWon();
-                    }
-                    playerOneTurnToMove = false;
-                    Console.Clear();
+        //            PlayerTurn(playerOneMove, 'X');// need to fix this to new custom player move
+        //            PlayerOneGameWinner();
+        //            if (playerWon == true)
+        //            {
+        //                PlayerOneWon();
+        //            }
+        //            playerOneTurnToMove = false;
+        //            Console.Clear();
 
-                }
-                else
-                {
-                    Console.WriteLine($"" + playerTwo + " Make your move");
-                    CustomBoardLayout();
-                    char playerTwoMove = Convert.ToChar(Console.ReadLine());
+        //        }
+        //        else
+        //        {
+        //            Console.WriteLine($"" + playerTwo + " Make your move");
+        //            CustomBoardLayout();
+        //            char playerTwoMove = Convert.ToChar(Console.ReadLine());
 
-                    PlayerTurn(playerTwoMove, 'O');
-                    PlayerTwoGameWinner();
-                    if (playerWon == true)
-                    {
-                        PlayerTwoWon();
-                    }
-                    playerOneTurnToMove = true;
-                    Console.Clear();
-                }
-            }
+        //            PlayerTurn(playerTwoMove, 'O');
+        //            PlayerTwoGameWinner();
+        //            if (playerWon == true)
+        //            {
+        //                PlayerTwoWon();
+        //            }
+        //            playerOneTurnToMove = true;
+        //            Console.Clear();
+        //        }
+        //    }
         }
     }
 }
