@@ -34,7 +34,8 @@ namespace Console_TicTacToe
         }
         public int GetPlayerTotalWins()
         {
-            return _playerTotalWins;                
+            return _playerTotalWins;
+            
         }
     }
 }

@@ -32,7 +32,8 @@ namespace Console_TicTacToe
                     if (playerOneTurnToMove == true)
                     {
                         Console.WriteLine(" {0} Make your move", playerOne.GetPlayerName());
-                        //ClassicLayout();
+                        TicTacToeBoard ticTacToeBoard = new TicTacToeBoard(3, 3);
+                        ticTacToeBoard.printGrid();
                         int playerOneMove = Int32.Parse(Console.ReadLine());//Issue here
 
 
