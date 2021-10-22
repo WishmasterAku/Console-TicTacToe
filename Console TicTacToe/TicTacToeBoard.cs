@@ -53,21 +53,29 @@ namespace Console_TicTacToe
             for (int i = 0; i <= _col * 4; ++i)
             {
                 Console.Write("-");
+                
             }
+            Console.WriteLine("");
         }
 
         public bool PlayerMove(Player currentPlayer, int rowPosition, int colPosition)
         {
-            if (position[rowPosition, colPosition] == ' ')
-            {
-                position[rowPosition, colPosition] = currentPlayer.GetPlayerSign();
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
+            //if ((rowPosition < 3 || rowPosition > 0) && ((colPosition < 3 || colPosition > 0)))
+            //{
+                if (position[rowPosition, colPosition] == ' ')
+                {
+                    position[rowPosition, colPosition] = currentPlayer.GetPlayerSign();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            //}
+            //    else
+            //    {
+            //        return false;
+            //    }        
         }
 
     }//CLASS

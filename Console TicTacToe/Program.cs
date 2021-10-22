@@ -39,27 +39,23 @@ namespace Console_TicTacToe
                     //if (playerOneTurnToMove == true)
                     foreach(Player currentPlayer in players)
                     {
+                        Console.Clear();
                         ticTacToeBoard.printGrid();
-
+                        
                         bool validMove = false;
 
                         while (validMove == false)
                         {
-
-                            Console.WriteLine("{0} please select a Column", currentPlayer.GetPlayerName());
-                            int rowPosition = Int32.Parse(Console.ReadLine());
+                            Console.WriteLine("");
                             Console.WriteLine("{0} please select a Row", currentPlayer.GetPlayerName());
+                            int rowPosition = Int32.Parse(Console.ReadLine());
+                            Console.WriteLine("{0} please select a Column", currentPlayer.GetPlayerName());
                             int colPosition = Int32.Parse(Console.ReadLine());
                             validMove = ticTacToeBoard.PlayerMove(currentPlayer, rowPosition, colPosition);
-
+                            
                         }
-                        
-                        ticTacToeBoard.printGrid();
 
-
-
-                        
-                        Console.ReadLine();
+                    
                     }
                 }
             }
