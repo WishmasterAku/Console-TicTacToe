@@ -11,12 +11,7 @@ namespace Console_TicTacToe
         private int _row;
         private int _col;
         private char[,] position;
-        //private int _rowPos;
-        //private int _colPos;
-        //private bool _playersTurn;
-        //private char _playerSign = 'X';
-
-
+     
         public TicTacToeBoard(int row, int col)
         {
             _row = row;
@@ -29,12 +24,13 @@ namespace Console_TicTacToe
                 for (int y = 0; y < col; y++)
                 {
 
-                    position[x, y] = ' ';
+                    position[x, y] = ' ';//replaces the zeros to blank spots
                 } 
             }
         }
         public void printGrid()
         {
+            //Console.WriteLine("Columns");
             Console.Write(" ");
             for (int i = 0; i <= _col * 4; ++i)
             {
@@ -44,10 +40,6 @@ namespace Console_TicTacToe
 
             for (int x = 0; x < _row; x++)
             {
-
-
-
-
                 for (int y = 0; y < _col; y++)
                 {
                     Console.Write(" | ");
@@ -66,11 +58,6 @@ namespace Console_TicTacToe
 
         public bool PlayerMove(Player currentPlayer, int rowPosition, int colPosition)
         {
-
-            //_playerSign = playerSign;
-            //_rowPos = rowPosition;
-            //_colPos = colPosition;
-
             if (position[rowPosition, colPosition] == ' ')
             {
                 position[rowPosition, colPosition] = currentPlayer.GetPlayerSign();
@@ -86,27 +73,4 @@ namespace Console_TicTacToe
     }//CLASS
 }//NAMESPACE
 
-        //public static void ClassicLayout()
-        //{
-
-        //    int[] position = Enumerable.Range(0, 100).ToArray();
-
-        //    int x = 1;
-        //    for (int row = 0; row < 3; row++)
-        //    {
-        //        Console.Write("|  ");
-        //        for (int col = 0; col < 3; col++)
-        //        {
-        //            Console.Write(position[x].ToString("D2"));
-        //            Console.Write("  |  ");
-        //            x++;
-        //        }
-        //        Console.WriteLine();
-
-        //    }
-
-        //}
-        //public static void CustomLayout()
-        //{
-        //}
- 
+        
