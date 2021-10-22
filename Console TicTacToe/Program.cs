@@ -9,7 +9,7 @@ namespace Console_TicTacToe
         {
             bool gameInSession = true;
             bool playerOneTurnToMove = true;
-             
+            
             Console.WriteLine("Welcome to Xander's Tic Tac Toe Game");
             //PlayerOne
             Console.WriteLine("Player One Please enter your name");
@@ -27,15 +27,21 @@ namespace Console_TicTacToe
 
             if (typeOfGame == 1)
             {
+                TicTacToeBoard ticTacToeBoard = new TicTacToeBoard(3, 3);
+
                 while (gameInSession == true)
                 {
                     if (playerOneTurnToMove == true)
                     {
-                        Console.WriteLine(" {0} Make your move", playerOne.GetPlayerName());
-                        TicTacToeBoard ticTacToeBoard = new TicTacToeBoard(3, 3);
                         ticTacToeBoard.printGrid();
-                        int playerOneMove = Int32.Parse(Console.ReadLine());//Issue here
-
+                        
+                        Console.WriteLine("{0} please select a Column", playerOne.GetPlayerName());                        
+                        int rowPosition = Int32.Parse(Console.ReadLine());
+                        Console.WriteLine("{0} please select a Row", playerOne.GetPlayerName());                        
+                        int colPosition = Int32.Parse(Console.ReadLine());
+                        ticTacToeBoard.PlayerMove(rowPosition, colPosition);
+                        
+                        ticTacToeBoard.printGrid();
 
 
 
@@ -44,11 +50,7 @@ namespace Console_TicTacToe
                     }
                 }
             }
-        }
-        public static void PlayerMove()
-        {
-            //spots[0] = 'X';
-        }
+        }        
     }//class
 }//namespace
 

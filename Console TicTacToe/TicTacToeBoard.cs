@@ -10,7 +10,12 @@ namespace Console_TicTacToe
     {
         private int _row;
         private int _col;
-        private int[,] position; 
+        private int[,] position;
+        private int _rowPos;
+        private int _colPos;
+        private bool _playersTurn;
+        private char _playerSign = 'X';
+
 
         public TicTacToeBoard(int row, int col)
         {
@@ -23,9 +28,9 @@ namespace Console_TicTacToe
                 
                 for (int y = 0; y < col; y++)
                 {
-                    
+
                     position[x, y] = 0;
-                }
+                } 
             }
         }
         public void printGrid()
@@ -58,6 +63,17 @@ namespace Console_TicTacToe
                 Console.Write("-");
             }
         }
+
+        public void PlayerMove(int rowPosition, int colPosition)
+        {
+            
+            _playerSign = playerSign;
+            _rowPos = rowPosition;
+            _colPos = colPosition;
+            position[rowPosition, colPosition] = Convert.ToChar(playerSign);
+
+        }
+
     }//CLASS
 }//NAMESPACE
 
