@@ -10,18 +10,18 @@ namespace Console_TicTacToe
     {
         private int _row;
         private int _col;
-        private int[,] position;
-        private int _rowPos;
-        private int _colPos;
-        private bool _playersTurn;
-        private char _playerSign = 'X';
+        private char[,] position;
+        //private int _rowPos;
+        //private int _colPos;
+        //private bool _playersTurn;
+        //private char _playerSign = 'X';
 
 
         public TicTacToeBoard(int row, int col)
         {
             _row = row;
             _col = col;
-            position = new int[row, col];
+            position = new char[row, col];
 
             for (int x = 0; x < row; x++)
             {
@@ -29,7 +29,7 @@ namespace Console_TicTacToe
                 for (int y = 0; y < col; y++)
                 {
 
-                    position[x, y] = 0;
+                    position[x, y] = ' ';
                 } 
             }
         }
@@ -64,13 +64,22 @@ namespace Console_TicTacToe
             }
         }
 
-        public void PlayerMove(int rowPosition, int colPosition)
+        public bool PlayerMove(Player currentPlayer, int rowPosition, int colPosition)
         {
-            
-            _playerSign = playerSign;
-            _rowPos = rowPosition;
-            _colPos = colPosition;
-            position[rowPosition, colPosition] = Convert.ToChar(playerSign);
+
+            //_playerSign = playerSign;
+            //_rowPos = rowPosition;
+            //_colPos = colPosition;
+
+            if (position[rowPosition, colPosition] == ' ')
+            {
+                position[rowPosition, colPosition] = currentPlayer.GetPlayerSign();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
         }
 
