@@ -60,8 +60,10 @@ namespace Console_TicTacToe
 
         public bool PlayerMove(Player currentPlayer, int rowPosition, int colPosition)
         {
-            //if ((rowPosition < 3 || rowPosition > 0) && ((colPosition < 3 || colPosition > 0)))
-            //{
+            if ((rowPosition > _row || rowPosition < 0) && ((colPosition > _col || colPosition < 0)))
+            {
+                return false;
+            }
                 if (position[rowPosition, colPosition] == ' ')
                 {
                     position[rowPosition, colPosition] = currentPlayer.GetPlayerSign();

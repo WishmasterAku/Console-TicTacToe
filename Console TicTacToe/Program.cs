@@ -48,9 +48,9 @@ namespace Console_TicTacToe
                         {
                             Console.WriteLine("");
                             Console.WriteLine("{0} please select a Row", currentPlayer.GetPlayerName());
-                            int rowPosition = Int32.Parse(Console.ReadLine());
+                            int rowPosition = Int32.Parse(Console.ReadLine())-1;
                             Console.WriteLine("{0} please select a Column", currentPlayer.GetPlayerName());
-                            int colPosition = Int32.Parse(Console.ReadLine());
+                            int colPosition = Int32.Parse(Console.ReadLine())-1;
                             validMove = ticTacToeBoard.PlayerMove(currentPlayer, rowPosition, colPosition);
                             
                         }
