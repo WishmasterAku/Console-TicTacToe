@@ -94,7 +94,7 @@ namespace Console_TicTacToe
         //==========================================================================================
 
         //==========================================================================================
-        public bool PlayerWon(Player currentPlayer)
+        public bool checkPlayerWon(Player currentPlayer)
         {
             //Horizontal 
             for (int i = 0; i < _row; ++i)
@@ -146,10 +146,7 @@ namespace Console_TicTacToe
         public void PlayGame()
         {
 
-
-            bool gameInSession = true;
-
-            while (gameInSession == true)
+            while (true)
             {
                 //if (playerOneTurnToMove == true)
                 foreach (Player currentPlayer in _players)
@@ -157,36 +154,16 @@ namespace Console_TicTacToe
                     Console.Clear();
                     this.printGrid();
 
-                    bool validMove = false;
-                    bool playerWon = false;
-                    while (validMove == false)
+                    this.playerTurn(currentPlayer);
+                    
+                    if (this.checkPlayerWon(currentPlayer))
                     {
-                        Console.WriteLine("");
-                        Console.WriteLine("{0} please select a Row", currentPlayer.GetPlayerName());
-                        int rowPosition = Int32.Parse(Console.ReadLine()) - 1;
-                        Console.WriteLine("{0} please select a Column", 
-                            currentPlayer.GetPlayerName());
-                        int colPosition = Int32.Parse(Console.ReadLine()) - 1;
-                        validMove = this.PlayerMove(currentPlayer, rowPosition, 
-                            colPosition);
-                        playerWon = this.PlayerWon(currentPlayer);
-                        if (playerWon == true)
-                        {
-                            Console.Clear();
-                            this.printGrid();
 
-                            currentPlayer.IncreasedPlayerTotalWins();
+                        this.PlayerWon(currentPlayer);
 
-                            Console.WriteLine("Congratulations {0}", currentPlayer.GetPlayerName());
-                            Console.WriteLine("Scoreboard");
-                            //Console.WriteLine("{0} {1} | {2} {3}", playerOne.GetPlayerName(),
-                            //playerOne.GetPlayerTotalWins(),
-                            //                                        playerTwo.GetPlayerName(),
-                            //                                        playerTwo.GetPlayerTotalWins());
-                            Console.ReadLine();
-                            gameInSession = false;
-                        }
+                        return; // exits the function so ofcourse it exist all loops
                     }
+                    
                 }
             }
 
@@ -194,6 +171,43 @@ namespace Console_TicTacToe
         }// end of PlayGame
         //==========================================================================================
 
+
+        //==========================================================================================
+        private void playerTurn(Player currentPlayer)
+        {
+            bool validMove = false;
+            while (validMove == false)
+            {
+                Console.Clear();
+                Console.WriteLine("");
+                Console.WriteLine("{0} please select a Row", currentPlayer.GetPlayerName());
+                int rowPosition = Int32.Parse(Console.ReadLine()) - 1;
+                Console.WriteLine("{0} please select a Column", currentPlayer.GetPlayerName());
+                int colPosition = Int32.Parse(Console.ReadLine()) - 1;
+                validMove = this.PlayerMove(currentPlayer, rowPosition, colPosition);
+            }
+        }// end of playerTurn
+        //==========================================================================================
+
+
+        //==========================================================================================
+        private void PlayerWon(Player currentPlayer)
+        {
+            Console.Clear();
+            this.printGrid();
+
+            currentPlayer.IncreasedPlayerTotalWins();
+
+            Console.WriteLine("Congratulations {0}", currentPlayer.GetPlayerName());
+            Console.WriteLine("Scoreboard");
+            //Console.WriteLine("{0} {1} | {2} {3}", playerOne.GetPlayerName(),
+            //playerOne.GetPlayerTotalWins(),
+            //                                        playerTwo.GetPlayerName(),
+            //                                        playerTwo.GetPlayerTotalWins());
+            Console.ReadLine();
+
+        }// end of PlayerWon
+        //==========================================================================================
 
     }//CLASS
 }//NAMESPACE

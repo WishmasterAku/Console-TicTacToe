@@ -8,7 +8,7 @@ namespace Console_TicTacToe
     {
 
         //==========================================================================================
-        public static void Main(string[] arg)
+        public static int Main(string[] arg)
         {
             bool gameInSession = true;            
 
@@ -30,8 +30,12 @@ namespace Console_TicTacToe
             {
 
                 Console.WriteLine("Would you like to play Classic TicTacToe Game or Custom?");
-                Console.WriteLine("Press 1 for Classic Game and 2 for Custom Game.");
-                int typeOfGame = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("Press 1 for Classic Game and 2 for Custom Game,"+
+                    " or type 'exit'.");
+
+                String consoleInput = Console.ReadLine();
+
+                int typeOfGame = Int32.Parse(consoleInput);
 
                 if (typeOfGame == 1)
                 {
@@ -50,7 +54,15 @@ namespace Console_TicTacToe
 
                 }
 
+                if(consoleInput.Equals("exit", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return 0; // exits the function, and as its main this exits the program
+                }
+
+
             }
+
+            return 0; // traditional to return an int from main
                
         }// end of main
         //==========================================================================================
