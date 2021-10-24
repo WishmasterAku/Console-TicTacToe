@@ -179,6 +179,7 @@ namespace Console_TicTacToe
             while (validMove == false)
             {
                 Console.Clear();
+                this.printGrid();
                 Console.WriteLine("");
                 Console.WriteLine("{0} please select a Row", currentPlayer.GetPlayerName());
                 int rowPosition = Int32.Parse(Console.ReadLine()) - 1;

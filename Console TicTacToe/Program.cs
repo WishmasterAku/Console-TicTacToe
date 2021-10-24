@@ -25,7 +25,7 @@ namespace Console_TicTacToe
             string playerTwoName = Console.ReadLine().ToString();
             Player playerTwo = new Player(playerTwoName, 'O', 0);
             players.Add(playerTwo);
-
+            
             while (true)
             {
 
