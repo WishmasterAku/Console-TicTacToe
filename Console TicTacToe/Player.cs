@@ -24,7 +24,6 @@ namespace Console_TicTacToe
             _playerName = playerName;
             _playerSign = playerSign;
             _playerTotalWins = playerTotalWins;
-
         }
         public string GetPlayerName()
         {
@@ -43,7 +42,5 @@ namespace Console_TicTacToe
         {
             return _playerTotalWins++;
         }
-        
-
     }
 }

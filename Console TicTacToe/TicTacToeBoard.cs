@@ -10,8 +10,7 @@ namespace Console_TicTacToe
     {
         private int _row;
         private int _col;
-        private char[,] position;
-     
+        private char[,] position;     
         public TicTacToeBoard(int row, int col)
         {
             _row = row;
@@ -19,11 +18,9 @@ namespace Console_TicTacToe
             position = new char[row, col];
 
             for (int x = 0; x < row; x++)
-            {
-                
+            {                
                 for (int y = 0; y < col; y++)
                 {
-
                     position[x, y] = ' ';//replaces the zeros to blank spots
                 } 
             }
@@ -42,8 +39,7 @@ namespace Console_TicTacToe
             {                
                 Console.Write("-");    
             }
-            Console.WriteLine("");
-            
+            Console.WriteLine("");            
             for (int x = 0; x < _row; x++)
             {
                 //Console.Write("    ");
@@ -53,7 +49,6 @@ namespace Console_TicTacToe
                     Console.Write(" | ");
                     Console.Write(position[x, y]);
                 }
-
                 Console.Write(" | ");
                 Console.WriteLine("");
             }
@@ -61,12 +56,10 @@ namespace Console_TicTacToe
             Console.Write(" ");
             for (int i = 0; i <= _col * 4; ++i)
             {
-                Console.Write("-");
-                
+                Console.Write("-");               
             }
             Console.WriteLine("");
         }
-
         public bool PlayerMove(Player currentPlayer, int rowPosition, int colPosition)
         {
             if ((rowPosition > _row || rowPosition < 0) && ((colPosition > _col || colPosition < 0)))
@@ -83,7 +76,6 @@ namespace Console_TicTacToe
                     return false;
                 }
         }
-
         public bool PlayerWon(Player currentPlayer)
         {
             //Horizontal 
@@ -138,8 +130,6 @@ namespace Console_TicTacToe
             {
                 return true;
             }
-
-
             return false;
         }
     }//CLASS
