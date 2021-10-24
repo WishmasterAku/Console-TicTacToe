@@ -30,18 +30,26 @@ namespace Console_TicTacToe
         }
         public void printGrid()
         {
-            //Console.WriteLine("Columns");
-            Console.Write(" ");
-            for (int i = 0; i <= _col * 4; ++i)
+            Console.WriteLine("    Columns");     
+            Console.Write("  ");
+            for (int i = 1; i <= _col; ++i)
             {
-                Console.Write("-");
+                Console.Write("-"+i+"- ");
             }
             Console.WriteLine("");
-
+            Console.Write(" ");
+            for (int i = 0; i <= _col * 4; ++i)
+            {                
+                Console.Write("-");    
+            }
+            Console.WriteLine("");
+            
             for (int x = 0; x < _row; x++)
             {
+                //Console.Write("    ");
                 for (int y = 0; y < _col; y++)
-                {
+                    //Console.Write("    ");
+                {                   
                     Console.Write(" | ");
                     Console.Write(position[x, y]);
                 }
@@ -49,6 +57,7 @@ namespace Console_TicTacToe
                 Console.Write(" | ");
                 Console.WriteLine("");
             }
+            //Console.Write("    ");
             Console.Write(" ");
             for (int i = 0; i <= _col * 4; ++i)
             {
@@ -73,13 +82,66 @@ namespace Console_TicTacToe
                 {
                     return false;
                 }
-            //}
-            //    else
-            //    {
-            //        return false;
-            //    }        
         }
 
+        public bool PlayerWon(Player currentPlayer)
+        {
+            //Horizontal 
+            if ((position[0, 0] == currentPlayer.GetPlayerSign()) && 
+                (position[0, 1] == currentPlayer.GetPlayerSign()) && 
+                (position[0, 2] == currentPlayer.GetPlayerSign()))
+            {
+                
+                return true;
+            }
+            else if ((position[1, 0] == currentPlayer.GetPlayerSign()) &&
+                    (position[1, 1] == currentPlayer.GetPlayerSign()) &&
+                    (position[1, 2] == currentPlayer.GetPlayerSign()))
+            {
+                return true;
+            }
+            else if     (((position[2, 0] == currentPlayer.GetPlayerSign()) &&
+                        (position[2, 1] == currentPlayer.GetPlayerSign()) &&
+                        (position[2, 2] == currentPlayer.GetPlayerSign())))
+            { 
+                return true;
+            }
+            //Vertical
+            else if ((position[0, 0] == currentPlayer.GetPlayerSign()) &&
+                    (position[1, 0] == currentPlayer.GetPlayerSign()) &&
+                    (position[2, 0] == currentPlayer.GetPlayerSign()))
+            {
+                return true;
+            }
+            else if     ((position[0, 1] == currentPlayer.GetPlayerSign()) &&
+                        (position[1, 1] == currentPlayer.GetPlayerSign()) &&
+                        (position[2, 1] == currentPlayer.GetPlayerSign()))
+            {
+                return true;
+            }
+            else if         (((position[0, 2] == currentPlayer.GetPlayerSign()) &&
+                            (position[1, 2] == currentPlayer.GetPlayerSign()) &&
+                            (position[2, 2] == currentPlayer.GetPlayerSign())))
+            {
+                return true;
+            }
+            //Diagonal
+            else if ((position[0, 0] == currentPlayer.GetPlayerSign()) &&
+                    (position[1, 1] == currentPlayer.GetPlayerSign()) &&
+                    (position[2, 2] == currentPlayer.GetPlayerSign()))
+            {
+                return true;
+            }
+            else if     (((position[0, 2] == currentPlayer.GetPlayerSign()) &&
+                        (position[1, 1] == currentPlayer.GetPlayerSign()) &&
+                        (position[2, 0] == currentPlayer.GetPlayerSign())))
+            {
+                return true;
+            }
+
+
+            return false;
+        }
     }//CLASS
 }//NAMESPACE
 
