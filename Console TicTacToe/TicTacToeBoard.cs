@@ -86,45 +86,45 @@ namespace Console_TicTacToe
                 
                 return true;
             }
-            else if ((position[1, 0] == currentPlayer.GetPlayerSign()) &&
+                 if ((position[1, 0] == currentPlayer.GetPlayerSign()) &&
                     (position[1, 1] == currentPlayer.GetPlayerSign()) &&
                     (position[1, 2] == currentPlayer.GetPlayerSign()))
             {
                 return true;
             }
-            else if     (((position[2, 0] == currentPlayer.GetPlayerSign()) &&
+                     if (((position[2, 0] == currentPlayer.GetPlayerSign()) &&
                         (position[2, 1] == currentPlayer.GetPlayerSign()) &&
                         (position[2, 2] == currentPlayer.GetPlayerSign())))
             { 
                 return true;
             }
             //Vertical
-            else if ((position[0, 0] == currentPlayer.GetPlayerSign()) &&
+                 if ((position[0, 0] == currentPlayer.GetPlayerSign()) &&
                     (position[1, 0] == currentPlayer.GetPlayerSign()) &&
                     (position[2, 0] == currentPlayer.GetPlayerSign()))
             {
                 return true;
             }
-            else if     ((position[0, 1] == currentPlayer.GetPlayerSign()) &&
+                     if ((position[0, 1] == currentPlayer.GetPlayerSign()) &&
                         (position[1, 1] == currentPlayer.GetPlayerSign()) &&
                         (position[2, 1] == currentPlayer.GetPlayerSign()))
             {
                 return true;
             }
-            else if         (((position[0, 2] == currentPlayer.GetPlayerSign()) &&
+                         if (((position[0, 2] == currentPlayer.GetPlayerSign()) &&
                             (position[1, 2] == currentPlayer.GetPlayerSign()) &&
                             (position[2, 2] == currentPlayer.GetPlayerSign())))
             {
                 return true;
             }
             //Diagonal
-            else if ((position[0, 0] == currentPlayer.GetPlayerSign()) &&
+                if ((position[0, 0] == currentPlayer.GetPlayerSign()) &&
                     (position[1, 1] == currentPlayer.GetPlayerSign()) &&
                     (position[2, 2] == currentPlayer.GetPlayerSign()))
             {
                 return true;
             }
-            else if     (((position[0, 2] == currentPlayer.GetPlayerSign()) &&
+                     if (((position[0, 2] == currentPlayer.GetPlayerSign()) &&
                         (position[1, 1] == currentPlayer.GetPlayerSign()) &&
                         (position[2, 0] == currentPlayer.GetPlayerSign())))
             {
