@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,41 +9,52 @@ namespace Console_TicTacToe
 {
     class TicTacToeBoard
     {
-        private int _row;
-        private int _col;
-        private char[,] position;
-        private List<Player> _players;
+        protected int _row;
+        protected int _col;
+        protected char[,] position;
+        protected List<Player> _players;
 
 
         //==========================================================================================
-        public TicTacToeBoard(List<Player> players, int row, int col)
+        public TicTacToeBoard(List<Player> players)
         {
-            _row = row;
-            _col = col;
-            position = new char[row, col];
+            _row = 3;
+            _col = 3;
             _players = players;
 
-            for (int x = 0; x < row; x++)
-            {                
-                for (int y = 0; y < col; y++)
-                {
-                    position[x, y] = ' ';//replaces the zeros to blank spots
-                } 
-            }
+            initialiseGrid();
+
+
+
         }// end of constructor
         //==========================================================================================
 
         //==========================================================================================
-        public void printGrid()
+        protected void initialiseGrid()
         {
-            Console.WriteLine("    Columns");     
-            Console.Write("  ");
+            position = new char[_row, _col];
+            for (int x = 0; x < _row; x++)
+            {
+                for (int y = 0; y < _col; y++)
+                {
+                    position[x, y] = ' ';
+                }
+            }
+
+        }//end of initialiseGrid
+        //==========================================================================================
+
+        //==========================================================================================
+        protected virtual void printGrid()
+        {
+            Console.WriteLine("     Columns");     
+            Console.Write("   ");
             for (int i = 1; i <= _col; ++i)
             {
                 Console.Write("-"+i+"- ");
             }
             Console.WriteLine("");
-            Console.Write(" ");
+            Console.Write("  ");
             for (int i = 0; i <= _col * 4; ++i)
             {                
                 Console.Write("-");    
@@ -51,6 +63,8 @@ namespace Console_TicTacToe
             for (int x = 0; x < _row; x++)
             {
                 //Console.Write("    ");
+
+                Console.Write(x+1);
                 for (int y = 0; y < _col; y++)
                     //Console.Write("    ");
                 {                   
@@ -61,7 +75,7 @@ namespace Console_TicTacToe
                 Console.WriteLine("");
             }
             //Console.Write("    ");
-            Console.Write(" ");
+            Console.Write("  ");
             for (int i = 0; i <= _col * 4; ++i)
             {
                 Console.Write("-");               
@@ -72,10 +86,9 @@ namespace Console_TicTacToe
 
 
         //==========================================================================================
-        public bool PlayerMove(Player currentPlayer, int rowPosition, int colPosition)
+        protected bool PlayerMove(Player currentPlayer, int rowPosition, int colPosition)
         {
-            if ((rowPosition > _row || rowPosition < 0) &&
-                ((colPosition > _col || colPosition < 0)))
+            if (rowPosition >= _row || rowPosition < 0 || colPosition >= _col || colPosition < 0)
             {
                 return false;
             }
@@ -94,7 +107,7 @@ namespace Console_TicTacToe
         //==========================================================================================
 
         //==========================================================================================
-        public bool checkPlayerWon(Player currentPlayer)
+        protected virtual bool checkPlayerWon(Player currentPlayer)
         {
             //Horizontal 
             for (int i = 0; i < _row; ++i)
@@ -146,6 +159,9 @@ namespace Console_TicTacToe
         public void PlayGame()
         {
 
+            // just incase we wanted to play agian with this object
+            initialiseGrid();
+
             while (true)
             {
                 //if (playerOneTurnToMove == true)
@@ -173,7 +189,7 @@ namespace Console_TicTacToe
 
 
         //==========================================================================================
-        private void playerTurn(Player currentPlayer)
+        protected virtual void playerTurn(Player currentPlayer)
         {
             bool validMove = false;
             while (validMove == false)
@@ -186,7 +202,11 @@ namespace Console_TicTacToe
                 Console.WriteLine("{0} please select a Column", currentPlayer.GetPlayerName());
                 int colPosition = Int32.Parse(Console.ReadLine()) - 1;
                 validMove = this.PlayerMove(currentPlayer, rowPosition, colPosition);
+
+                
             }
+
+
         }// end of playerTurn
         //==========================================================================================
 
