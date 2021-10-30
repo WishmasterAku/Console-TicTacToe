@@ -38,6 +38,11 @@ namespace Console_TicTacToe
 
                 String consoleInput = Console.ReadLine();
 
+                if (consoleInput.Equals("exit", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return 0; // exits the function, and as its main this exits the program
+                }
+
                 int typeOfGame = Int32.Parse(consoleInput);
 
                 if (typeOfGame == 1)
@@ -71,10 +76,7 @@ namespace Console_TicTacToe
 
                 }
 
-                if(consoleInput.Equals("exit", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    return 0; // exits the function, and as its main this exits the program
-                }
+                
 
 
             }
