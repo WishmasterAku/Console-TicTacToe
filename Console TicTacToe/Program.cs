@@ -25,7 +25,10 @@ namespace Console_TicTacToe
             string playerTwoName = Console.ReadLine().ToString();
             Player playerTwo = new Player(playerTwoName, 'O', 0);
             players.Add(playerTwo);
-            
+
+            TicTacToeBoard ticTacToeBoard;
+
+
             while (true)
             {
 
@@ -39,7 +42,7 @@ namespace Console_TicTacToe
 
                 if (typeOfGame == 1)
                 {
-                    TicTacToeBoard ticTacToeBoard = new TicTacToeBoard(players, 3, 3);
+                    ticTacToeBoard = new TicTacToeBoard(players);
 
                     ticTacToeBoard.PlayGame();
 
@@ -50,7 +53,21 @@ namespace Console_TicTacToe
                 if (typeOfGame == 2)
                 {
 
-                    Console.WriteLine("not yet implented...Please return later");
+                    //Console.WriteLine("not yet implented...Please return later");
+
+                    Console.WriteLine("How many rows would you like?");
+                    int rows = Int32.Parse(Console.ReadLine().ToString());
+                    Console.WriteLine("How many columns would you like?");
+                    int cols = Int32.Parse(Console.ReadLine().ToString());
+
+                    Console.WriteLine("How in a line to win?");
+                    int winCondition = Int32.Parse(Console.ReadLine().ToString());
+
+
+                    ticTacToeBoard = new SizeVariableTicTacToe(players, rows, cols, winCondition);
+
+                    ticTacToeBoard.PlayGame();
+
 
                 }
 
